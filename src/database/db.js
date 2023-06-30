@@ -7,9 +7,6 @@ const db = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD,{
         timestamps: false
     },
     dialectOptions:{
-        connectTimeout: 60000
-    },
-    dialectOptions:{
         connectTimeout: 220000
     }
 
