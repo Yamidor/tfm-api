@@ -19,7 +19,7 @@ const db = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD,{
 
 })
 
-db.sync({force:true}).then(()=>console.log("tablas creadas.."))
+db.sync({force:false}).then(()=>console.log("tablas creadas.."))
 
 
 export default db
