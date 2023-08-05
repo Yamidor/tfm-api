@@ -7,7 +7,6 @@ import Profesor from "../models/Profersor.js"
 
 
 export const Login = async (req, res)=>{
-    console.log(req.body)
     try {
         
         const profesor = await Profesor.findOne({

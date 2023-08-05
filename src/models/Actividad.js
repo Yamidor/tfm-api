@@ -1,4 +1,4 @@
-import {Sequelize, DataTypes, Model} from 'sequelize'
+import {Sequelize, DataTypes, Model, Op} from 'sequelize'
 import sequelize from '../database/db.js'
 import Logro from './Logro.js';
 class Actividad extends Model {
