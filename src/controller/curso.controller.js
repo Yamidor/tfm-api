@@ -17,3 +17,11 @@ export const getAllCursos = async (req, res)=>{
     res.status(201).json(cursos)
 }
 
+export const getCursoById = async (req, res)=>{
+    const curso = await Curso.findOne({
+        where: {
+            id: req.params.id
+        }
+    })
+    res.status(201).json(curso)
+}

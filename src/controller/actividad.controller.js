@@ -8,12 +8,14 @@ export const createActividad = async (req, res)=>{
         message: 'Actividad Creada...'
     })
 }
-
+export const getAll = async (req, res)=>{
+    const actividades = await Actividad.findAll()
+    res.status(201).json(actividades)
+}
 export const getAllActividades = async (req, res)=>{
     const actividades = await Actividad.findAll({
         where: {
-            logroId: req.params.idLogro,
-            normal: true
+            logroId: req.params.idLogro
         }
     })
     res.status(201).json(actividades)

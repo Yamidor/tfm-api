@@ -16,4 +16,11 @@ export const getAllMaterias = async (req, res)=>{
     const materias = await Materia.findAll()
     res.status(201).json(materias)
 }
-
+export const getMateriaById = async (req, res)=>{
+    const materia = await Materia.findOne({
+        where: {
+            id: req.params.id
+        }
+    })
+    res.status(201).json(materia)
+}
