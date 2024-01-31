@@ -9,8 +9,13 @@ export const createActividad = async (req, res)=>{
     })
 }
 export const getAll = async (req, res)=>{
-    const actividades = await Actividad.findAll()
-    res.status(201).json(actividades)
+    try {
+        const actividades = await Actividad.findAll()
+        res.status(201).json(actividades)
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Error interno del servidor' });
+    }
 }
 export const getAllActividades = async (req, res)=>{
     const actividades = await Actividad.findAll({

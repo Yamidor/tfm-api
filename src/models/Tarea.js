@@ -1,9 +1,7 @@
-import {Sequelize, DataTypes, Model} from 'sequelize'
+import {Sequelize, DataTypes, Model, Op} from 'sequelize'
 import sequelize from '../database/db.js'
-import Materia from './Materia.js'
-import Profesor from './Profersor.js';
-import Curso from './Curso.js';
-import Periodo from './Periodo.js';
+import Actividad from './Actividad.js';
+
 class Tarea extends Model {
 
 }
@@ -13,14 +11,25 @@ Tarea.init({
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
         primaryKey: true
+    }, 
+    nombre:{
+        type: DataTypes.STRING,
+        allowNull: true
     },
-    nombre: {
-        type: DataTypes.TEXT,
-        allowNull: false
+    orden:{
+        type: DataTypes.INTEGER,
+        allowNull: true
     }
 },{
     sequelize,
-    modelName: 'Tarea'
+    modelName: 'Tarea', 
+    tableName: 'tareas'
 })
 
+import('Actividad.js').then((Actividad) => {
+    Tarea.belongsTo(Actividad, {
+      foreignKey: 'actividadId',
+      targetKey: 'id',
+    });
+  });
 export default Tarea

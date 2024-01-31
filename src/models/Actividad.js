@@ -1,6 +1,7 @@
 import {Sequelize, DataTypes, Model, Op} from 'sequelize'
 import sequelize from '../database/db.js'
-import Logro from './Logro.js';
+import Tarea from './Tarea.js';
+
 class Actividad extends Model {
 
 }
@@ -15,9 +16,17 @@ Actividad.init({
         type: DataTypes.STRING,
         allowNull: false
     },
-    normal:{
-        type: DataTypes.BOOLEAN,
-        defaultValue: true
+    problema: {
+        type: DataTypes.TEXT,
+        allowNull: false
+    },
+    orden:{
+        type: DataTypes.INTEGER,
+        allowNull: true
+    },
+    unidad:{
+        type: DataTypes.STRING,
+        allowNull: false
     }
 },{
     sequelize,
@@ -25,6 +34,11 @@ Actividad.init({
     tableName: 'actividades'
 })
 
+Actividad.hasMany(Tarea, {
+    foreignKey: 'actividadId',
+    sourceKey: 'id',
+    order: [['orden', 'ASC']]
+});
 
 
 
